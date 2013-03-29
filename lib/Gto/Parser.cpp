@@ -34,7 +34,8 @@
 //  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 //  DAMAGE.
 //
-    by GNU Bison version 1.28  */
+
+/* by GNU Bison version 1.28 */
 
 #define YYBISON 1  /* Identify Bison output.  */
 

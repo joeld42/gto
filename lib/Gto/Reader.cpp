@@ -865,7 +865,7 @@ void Reader::fail( std::string why )
 const std::string& Reader::stringFromId(unsigned int i)
 {
     static std::string empty( "" );
-    if (i < 0 || i >= m_strings.size())
+    if ( i >= m_strings.size())
     {
         std::cerr << "WARNING: Gto::Reader: Malformed gto file: ";
         std::cerr << "invalid string index" << std::endl;

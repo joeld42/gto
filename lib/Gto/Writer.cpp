@@ -48,6 +48,9 @@
 
 #define GTO_DEBUG 0
 
+// zlibhacks doesn't work, i guess my zlib doesn't match...
+//#define GTO_SUPPORT_ZIP 1
+
 #ifdef GTO_SUPPORT_ZIP
 #include <fcntl.h>
 #include <zlib.h>
@@ -69,7 +72,8 @@ Writer::Writer()
       m_error(false),
       m_tableFinished(false),
       m_currentProperty(0),
-      m_type(CompressedGTO),
+//      m_type(CompressedGTO),
+      m_type(BinaryGTO),
       m_endDataCalled(false),
       m_beginDataCalled(false),
       m_objectActive(false),
@@ -86,8 +90,9 @@ Writer::Writer(ostream &o)
       m_error(false),
       m_tableFinished(false),
       m_currentProperty(0),
-      m_type(CompressedGTO),
-      m_endDataCalled(false),
+//      m_type(CompressedGTO),
+        m_type(BinaryGTO),
+        m_endDataCalled(false),
       m_beginDataCalled(false),
       m_objectActive(false),
       m_componentActive(false)
@@ -111,13 +116,13 @@ Writer::open(const char* filename, FileType type, bool writeIndex)
 {
     if (m_out || m_gzfile) return false;
 
-    m_outName         = filename;
-    m_type            = type;
-    m_writeIndexTable = writeIndex;
-
 #ifndef GTO_SUPPORT_ZIP
     if (type == CompressedGTO) type = BinaryGTO;
 #endif
+    
+    m_outName         = filename;
+    m_type            = type;
+    m_writeIndexTable = writeIndex;
 
     if (type == BinaryGTO || type == TextGTO)
     {
