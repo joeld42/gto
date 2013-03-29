@@ -83,9 +83,8 @@ inline Gto::DataType layoutToGtoType( Layout l )
     case IntLayout:     return Gto::Int;
     case ByteLayout:    return Gto::Byte;
     case StringLayout:  return Gto::String;
+    default: return Gto::Byte;
     }
-
-    return Gto::Byte;
 }
 
 //-*****************************************************************************
@@ -100,9 +99,8 @@ inline Layout gtoTypeToLayout( Gto::DataType d )
     case Gto::Int:    return IntLayout;
     case Gto::Byte:   return ByteLayout;
     case Gto::String: return StringLayout;
+    default: return ByteLayout;
     }
-
-    return ByteLayout;
 }
 
 //-*****************************************************************************

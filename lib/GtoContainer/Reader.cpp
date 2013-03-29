@@ -222,7 +222,7 @@ Reader::property( const std::string &name,
     // that. If not, continue below.
     if ( p == NULL )
     {
-        if ( np = newProperty( name, info ) )
+        if ( (np = newProperty( name, info )) )
         {
             c->add( np );
             np->resize( info.size );
